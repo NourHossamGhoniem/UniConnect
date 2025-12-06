@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+</head>
+<body>
+    <h2>Profile</h2>
+    <form method="POST">
+        <input name="username" value="{{ user.username }}" required>
+        <p>Email: {{ user.email }}</p>
+        <button type="submit">Update</button>
+    </form>
+    <a href="/logout">Logout</a>
+</body>
+</html>
