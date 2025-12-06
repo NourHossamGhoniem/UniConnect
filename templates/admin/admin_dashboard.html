@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Admin Dashboard</h2>
+<p><a href="{{ url_for('admin.add_entity') }}">Add Club/Office</a></p>
+<div style="display:flex;gap:20px;">
+  <div style="flex:1">
+    <h3>Clubs</h3>
+    {% for club in clubs %}
+      <div style="border:1px solid #ddd;padding:8px;margin-bottom:8px;">
+        <strong>{{ club.name }} ({{ club.id }})</strong>
+        <div>{{ club.category }} - {{ club.description }}</div>
+        <div>
+          <a href="{{ url_for('admin.edit_entity', entity='club', entity_id=club.id) }}">Edit</a>
+          <form action="{{ url_for('admin.delete_entity', entity='club', entity_id=club.id) }}" method="post" style="display:inline;">
+            <button type="submit">Delete</button>
+          </form>
+        </div>
+        <div>
+          <h4>Members</h4>
+          <ul>
+            {% for m in club.members %}
+              <li>{{ m.name }} - {{ m.email }} ({{ m.role }})</li>
+            {% else %}
+              <li>No members</li>
+            {% endfor %}
+          </ul>
+          <form action="{{ url_for('admin.add_member') }}" method="post">
+            <input type="hidden" name="entity" value="club">
+            <input type="hidden" name="entity_id" value="{{ club.id }}">
+            <input name="name" placeholder="name" required>
+            <input name="email" placeholder="email" required>
+            <select name="role">
+              <option>Head</option>
+              <option>Vice</option>
+              <option>Team Leader</option>
+              <option selected>Member</option>
+            </select>
+            <button type="submit">Add Member</button>
+          </form>
+          <form action="{{ url_for('admin.assign_role') }}" method="post" style="margin-top:6px;">
+            <input type="hidden" name="entity" value="club">
+            <input type="hidden" name="entity_id" value="{{ club.id }}">
+            <input name="email" placeholder="member email" required>
+            <select name="role">
+              <option>Head</option>
+              <option>Vice</option>
+              <option>Team Leader</option>
+              <option selected>Member</option>
+            </select>
+            <button type="submit">Assign Role</button>
+          </form>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div style="flex:1">
+    <h3>Offices</h3>
+    {% for office in offices %}
+      <div style="border:1px solid #ddd;padding:8px;margin-bottom:8px;">
+        <strong>{{ office.name }} ({{ office.id }})</strong>
+        <div>{{ office.description }}</div>
+        <div>
+          <a href="{{ url_for('admin.edit_entity', entity='office', entity_id=office.id) }}">Edit</a>
+          <form action="{{ url_for('admin.delete_entity', entity='office', entity_id=office.id) }}" method="post" style="display:inline;">
+            <button type="submit">Delete</button>
+          </form>
+        </div>
+        <div>
+          <h4>Members</h4>
+          <ul>
+            {% for m in office.members %}
+              <li>{{ m.name }} - {{ m.email }} ({{ m.role }})</li>
+            {% else %}
+              <li>No members</li>
+            {% endfor %}
+          </ul>
+          <form action="{{ url_for('admin.add_member') }}" method="post">
+            <input type="hidden" name="entity" value="office">
+            <input type="hidden" name="entity_id" value="{{ office.id }}">
+            <input name="name" placeholder="name" required>
+            <input name="email" placeholder="email" required>
+            <select name="role">
+              <option>Head</option>
+              <option>Vice</option>
+              <option>Team Leader</option>
+              <option selected>Member</option>
+            </select>
+            <button type="submit">Add Member</button>
+          </form>
+          <form action="{{ url_for('admin.assign_role') }}" method="post" style="margin-top:6px;">
+            <input type="hidden" name="entity" value="office">
+            <input type="hidden" name="entity_id" value="{{ office.id }}">
+            <input name="email" placeholder="member email" required>
+            <select name="role">
+              <option>Head</option>
+              <option>Vice</option>
+              <option>Team Leader</option>
+              <option selected>Member</option>
+            </select>
+            <button type="submit">Assign Role</button>
+          </form>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
