@@ -1,0 +1,15 @@
+<h1>All Clubs</h1>
+<form method="get">
+    <input type="text" name="q" placeholder="Search clubs">
+    <select name="category">
+        <option value="">All</option>
+        <option value="Academic">Academic</option>
+        <option value="Social">Social</option>
+    </select>
+    <button type="submit">Search</button>
+</form>
+<ul>
+{% for c in clubs %}
+<li><a href="/clubs/{{ c.name }}">{{ c.name }}</a> - {{ c.description }}</li>
+{% endfor %}
+</ul>
