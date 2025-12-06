@@ -1,0 +1,6 @@
+<h1>All Offices</h1>
+<ul>
+{% for o in offices %}
+<li><a href="/offices/{{ o.name }}">{{ o.name }}</a> - {{ o.description }}</li>
+{% endfor %}
+</ul>
