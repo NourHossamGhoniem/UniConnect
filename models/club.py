@@ -1,7 +1,23 @@
+from dataclasses import dataclass, field
+from typing import List
+
+@dataclass
+class Member:
+    name: str
+    email: str
+    role: str = "Member"
+
+@dataclass
 class Club:
-    def _init_(self, name, description, category, members, contact_email):
-        self.name = name
-        self.description = description
-        self.category = category
-        self.members = members
-        self.contact_email = contact_email
+    id: int
+    name: str
+    description: str = ""
+    category: str = ""
+    members: List[Member] = field(default_factory=list)
+
+@dataclass
+class Office:
+    id: int
+    name: str
+    description: str = ""
+    members: List[Member] = field(default_factory=list)

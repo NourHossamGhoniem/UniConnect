@@ -1,6 +1,1 @@
-id,name,description,category,members,contact_email
-1,Robotics Club,Robots, competitions and tech events,Academic,"Ali:Leader:ali@example.com;Mona:Member:mona@example.com",robotics@example.com
-2,Music Club,Music, singing and performing arts,Arts,"Sara:Singer:sara@example.com;Omar:Guitarist:omar@example.com",music@example.com
-3,Art Club,Painting, drawing and exhibitions,Arts,"Lina:Painter:lina@example.com;Mostafa:Member:mostafa@example.com",art@example.com
-4,Sports Club,Football, basketball and athletics,Sports,"Ahmed:Captain:ahmed@example.com;Youssef:Member:youssef@example.com",sports@example.com
-5,Programming Club,Coding practice, hackathons and workshops,Academic,"Nour:Leader:nour@example.com;Tasneem:Member:tasneem@example.com",programming@example.com
+id,name,description,category
