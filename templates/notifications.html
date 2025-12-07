@@ -1,9 +1,17 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Inbox</title>
+</head>
+<body>
 
-{% block content %}
-<div class="container">
-    
-    <h3>Notifications</h3>
+    <nav>
+        <h3>UniConnect</h3>
+        <a href="/messages/contact">Send a New Message</a>
+    </nav>
+    <hr>
+
+    <h3>🔔 Notifications</h3>
     <ul>
         {% for notif in notifications %}
             <li>{{ notif.message }}</li>
@@ -12,25 +20,31 @@
         {% endfor %}
     </ul>
 
-    <hr> <h3>Inbox</h3>
-    <table class="table">
-        <tr>
-            <th>From</th>
-            <th>Message</th>
-            <th>Time</th>
-        </tr>
-        {% for msg in messages %}
-        <tr>
-            <td>{{ msg.sender }}</td>
-            <td>{{ msg.content }}</td>
-            <td>{{ msg.time }}</td>
-        </tr>
-        {% else %}
-        <tr>
-            <td colspan="3">No messages found.</td>
-        </tr>
-        {% endfor %}
+    <hr>
+
+    <h3>📩 Inbox</h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>From</th>
+                <th>Message</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for msg in messages %}
+            <tr>
+                <td>{{ msg.sender }}</td>
+                <td>{{ msg.content }}</td>
+                <td>{{ msg.time }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="3">No messages found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
 
-</div>
-{% endblock %}
+</body>
+</html>
