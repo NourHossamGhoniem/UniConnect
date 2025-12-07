@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Join a Club</h2>
+
+
+<p>Enter your student id/name and the club id/name you wish to join.
+You will see your own requests below after submitting.</p>
+
+<form action="{{ url_for('join.submit') }}" method="post">
+  <div>
+    <label for="student">Student (ID or name)</label><br>
+    <input type="text" name="student" id="student" value="{{ student }}" required>
+  </div>
+  <div style="margin-top:8px;">
+    <label for="club">Club (ID or name)</label><br>
+    <input type="text" name="club" id="club" required>
+  </div>
+  <div style="margin-top:8px;">
+    <button type="submit">Send Join Request</button>
+  </div>
+</form>
+
+{% if requests %}
+  <h3 style="margin-top:16px;">Your Join Requests</h3>
+  <table border="1" cellpadding="6" cellspacing="0">
+    <thead>
+      <tr><th>Club</th><th>Status</th><th>Requested At</th></tr>
+    </thead>
+    <tbody>
+      {% for r in requests %}
+      <tr>
+        <td>{{ r.club }}</td>
+        <td>{{ r.status }}</td>
+        <td>{{ r.created_at }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endif %}
+{% endblock %}
