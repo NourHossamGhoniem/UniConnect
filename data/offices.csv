@@ -1,1 +1,4 @@
-id,name,description
+id,name,description,contact_email
+1,Student Affairs,Handles academic and student issues,affairs@university.edu
+2,Finance Office,Manages payments and student fees,finance@university.edu
+
