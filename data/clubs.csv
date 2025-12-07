@@ -1,1 +1,6 @@
-id,name,description,category
+id,name,email,role,belongs_to_type,belongs_to_id
+1,Ali,ali@gmail.com,Member,club,1
+2,Omar,omar@gmail.com,Lead,club,1
+3,Lina,lina@gmail.com,Member,office,1
+4,Sara,sara@gmail.com,Manager,office,1
+
