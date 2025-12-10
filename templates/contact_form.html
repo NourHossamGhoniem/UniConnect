@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <nav style="display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="margin: 0; color: #104659;">UniConnect</h3>
+            <a href="/messages/inbox">Go to My Inbox</a>
+        </nav>
+        <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+
+        <h2>Send Message</h2>
+        <form method="POST">
+            
+            <label>To (Email):</label>
+            <input type="text" name="receiver" placeholder="e.g. yourname@ust.edu.eg" required>
+
+            <label>Message:</label>
+            <textarea name="content" rows="6" placeholder="Type your message here..." required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+</body>
+</html>

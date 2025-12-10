@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>{{ club.name }}</h1>
+        <p>{{ club.description }}</p>
+        <p>Category: {{ club.category }}</p>
+        <p>Contact: {{ club.contact_email }}</p>
+        <p>Members:</p>
+        <ul>
+        {% for m in club.members %}
+        <li>{{ m }}</li>
+        {% endfor %}
+        </ul>
+        <a href="/clubs">Back to list</a>
+    </div>
+</body>

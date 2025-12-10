@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Inbox</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+
+    <nav style="display: flex; justify-content: space-between; align-items: center;">
+        <h3 style="margin: 0;">UniConnect</h3>
+        <a href="/messages/contact" style="margin: 0;">Send a New Message</a>
+    </nav>
+    <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+
+    <h3>🔔 Notifications</h3>
+    <ul style="margin-bottom: 30px;">
+        {% for notif in notifications %}
+            <li>{{ notif.message }}</li>
+        {% else %}
+            <li>No new notifications.</li>
+        {% endfor %}
+    </ul>
+
+    <h3>📩 Inbox</h3>
+    
+    <table class="inbox-table">
+        <thead>
+            <tr>
+                <th>From</th>
+                <th>Message</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for msg in messages %}
+            <tr>
+                <td>{{ msg.sender }}</td>
+                <td>{{ msg.content }}</td>
+                <td>{{ msg.time }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="3" style="text-align: center; color: #777;">No messages found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    </div>
+
+</body>
+</html>

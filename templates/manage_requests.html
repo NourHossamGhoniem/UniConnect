@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Manage Join Requests for "{{ club_id }}"</h2>
+
+<p>As a club leader you can approve or reject pending join requests.</p>
+
+{% if requests %}
+  <table border="1" cellpadding="6" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Student</th>
+        <th>Status</th>
+        <th>Requested At</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for r in requests %}
+      <tr>
+        <td>{{ r.student }}</td>
+        <td>{{ r.status }}</td>
+        <td>{{ r.created_at }}</td>
+        <td>
+          {% if r.status == 'pending' %}
+            <form action="{{ url_for('join.update', club_id=club_id) }}" method="post" style="display:inline">
+              <input type="hidden" name="request_id" value="{{ r.id }}">
+              <input type="hidden" name="action" value="approve">
+              <button type="submit">Approve</button>
+            </form>
+            <form action="{{ url_for('join.update', club_id=club_id) }}" method="post" style="display:inline; margin-left:6px;">
+              <input type="hidden" name="request_id" value="{{ r.id }}">
+              <input type="hidden" name="action" value="reject">
+              <button type="submit">Reject</button>
+            </form>
+          {% else %}
+            <span style="color:gray;">No actions</span>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <p>No join requests for this club.</p>
+{% endif %}
+{% endblock %}

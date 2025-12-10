@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Profile</h1>
+
+        <form method="POST">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" value="{{ user.username }}"> <label>Email</label>
+            <p style="font-weight: bold; color: #104659;">{{ user.email }}</p>
+
+            <button type="submit">Update</button>
+            <a href="/logout" style="color: #dc3545;">Logout</a>
+        </form>
+    </div>
+
+</body>
+</html>

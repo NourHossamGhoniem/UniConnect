@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>All Offices</h1>
+        
+        <form method="get">
+            <input type="text" name="q" placeholder="Search offices">
+            <button type="submit">Search</button>
+        </form>
+        
+        <br> <ul>
+        {% for o in offices %}
+            <li><a href="/offices/{{ o.name }}">{{ o.name }}</a> - {{ o.description }}</li>
+        {% else %}
+            <li>No offices found.</li>
+        {% endfor %}
+        </ul>
+    </div>
+</body>
