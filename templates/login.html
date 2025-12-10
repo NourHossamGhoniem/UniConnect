@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - UniConnect</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <div style="text-align: center; margin-bottom: 20px;">
+            <h1 style="margin-bottom: 5px;">UniConnect</h1>
+            <p style="color: #666;">Welcome back! Please login.</p>
+        </div>
+
+        <form method="POST">
+            <label for="email">Email Address</label>
+            <input type="email" name="email" id="email" placeholder="e.g. student@ust.edu.eg" required>
+
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="Enter your password" required>
+
+            <button type="submit">Log In</button>
+        </form>
+
+        <div style="text-align: center; margin-top: 15px;">
+            <p style="font-size: 0.9em;">
+                Don't have an account? <a href="/register">Register</a>
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>

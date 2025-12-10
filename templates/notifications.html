@@ -2,17 +2,20 @@
 <html>
 <head>
     <title>My Inbox</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-    <nav>
-        <h3>UniConnect</h3>
-        <a href="/messages/contact">Send a New Message</a>
+    <div class="container">
+
+    <nav style="display: flex; justify-content: space-between; align-items: center;">
+        <h3 style="margin: 0;">UniConnect</h3>
+        <a href="/messages/contact" style="margin: 0;">Send a New Message</a>
     </nav>
-    <hr>
+    <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
 
     <h3>🔔 Notifications</h3>
-    <ul>
+    <ul style="margin-bottom: 30px;">
         {% for notif in notifications %}
             <li>{{ notif.message }}</li>
         {% else %}
@@ -20,10 +23,9 @@
         {% endfor %}
     </ul>
 
-    <hr>
-
     <h3>📩 Inbox</h3>
-    <table border="1">
+    
+    <table class="inbox-table">
         <thead>
             <tr>
                 <th>From</th>
@@ -40,11 +42,13 @@
             </tr>
             {% else %}
             <tr>
-                <td colspan="3">No messages found.</td>
+                <td colspan="3" style="text-align: center; color: #777;">No messages found.</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+    
+    </div>
 
 </body>
 </html>

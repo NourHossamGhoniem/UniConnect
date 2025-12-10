@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UniConnect Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="brand">UniConnect</div>
+        <div class="nav-links">
+            <a href="/profile">👤 My Profile</a>
+            <a href="/logout" class="logout-link">Log Out</a>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <header class="welcome-header">
+            <h1>Welcome Back!</h1> <p>Explore university life and manage your connections.</p>
+        </header>
+
+        <div class="dashboard-grid">
+
+            {% if session.get('role') == 'admin' %}
+            <a href="/admin" class="dashboard-card" style="border-top: 5px solid #dc3545;">
+                <div class="icon">🛠️</div>
+                <h3 style="color: #dc3545;">Admin Panel</h3>
+                <p>Manage clubs, offices, and settings.</p>
+            </a>
+            {% endif %}
+            
+            <a href="/clubs" class="dashboard-card">
+                <div class="icon">🏛️</div>
+                <h3>Student Clubs</h3>
+                <p>Browse active student organizations.</p>
+            </a>
+
+            <a href="/offices" class="dashboard-card">
+                <div class="icon">🏢</div>
+                <h3>Offices</h3>
+                <p>Find administrative offices and services.</p>
+            </a>
+
+            <a href="/messages/contact" class="dashboard-card">
+                <div class="icon">✉️</div>
+                <h3>Contact</h3>
+                <p>Send messages.</p>
+            </a>
+
+            <a href="/messages/inbox" class="dashboard-card">
+                <div class="icon">🔔</div>
+                <h3>Inbox</h3>
+                <p>Check your notifications and messages.</p>
+            </a>
+
+        </div>
+    </div>
+
+</body>
+</html>

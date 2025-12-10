@@ -7,8 +7,7 @@ message_bp = Blueprint("message", __name__, url_prefix="/messages")
 @message_bp.route("/contact", methods=["GET", "POST"])
 def contact():
     if "user_email" not in session:
-        session["user_email"] = "student@zewailcity.edu.eg"
-    
+        return redirect("/")
     user = session["user_email"]
 
     if request.method == "POST":
@@ -26,8 +25,7 @@ def contact():
 @message_bp.route("/inbox")
 def inbox():
     if "user_email" not in session:
-        session["user_email"] = "student@zewailcity.edu.eg"
-    
+        return redirect("/")
     user = session["user_email"]
     
     repo = MessageRepository()
