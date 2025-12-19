@@ -52,14 +52,23 @@ def profile():
     if "user_email" not in session:
         return redirect("/login")
 
-    user = repo.get_user_by_email(session["user_email"])
+    original_email = session["user_email"]
+    user_info = repo.get_user_by_email(original_email)
 
     if request.method == "POST":
-        user.username = request.form["username"]
-        repo.update_user(user)
-        return "Profile updated!"
+        new_username = request.form["username"]
+        new_email = request.form["email"]
+        new_password = request.form["password"]
+        
+        updated_user = User(new_username, new_email, new_password, user_info.role)
+        
+        repo.update_user(updated_user, original_email)
+        
+        session["user_email"] = new_email
+        
+        return redirect("/profile")
 
-    return render_template("profile.html", user=user)
+    return render_template("profile.html", user=user_info)
 
 @auth_bp.route("/logout")
 def logout():

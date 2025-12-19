@@ -12,10 +12,19 @@
 
         <form method="POST">
             <label for="username">Username</label>
-            <input type="text" id="username" name="username" value="{{ user.username }}"> <label>Email</label>
-            <p style="font-weight: bold; color: #104659;">{{ user.email }}</p>
+            <input type="text" id="username" name="username" value="{{ user.username }}"> 
+            
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" value="{{ user.email }}">
 
-            <button type="submit">Update</button>
+            <label for="password">Password</label>
+            <input type="text" id="password" name="password" value="{{ user.password }}">
+
+            <br><br>
+
+            <button type="submit">Update Profile</button>
+            
+            <br><br>
             <a href="/logout" style="color: #dc3545;">Logout</a>
         </form>
     </div>
