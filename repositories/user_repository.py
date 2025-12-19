@@ -39,17 +39,35 @@ class UserRepository:
             fieldnames=["username", "email", "password", "role"]
         )
     
-    def update_user(self, user: User):
+
+
+
+    
+    def update_user(self, user, original_email):
         all_users = self.get_all_users()
         updated = False
+
         for u in all_users:
-            if u.email == user.email:
+            if u.email == original_email:
                 u.username = user.username
+                u.password = user.password
+                u.email = user.email
                 updated = True
+                break
+
         if updated:
-            # Use write_csv from FileManager
+            data_to_save = []
+            for u in all_users:
+                user_dict = {
+                    "username": u.username,
+                    "email": u.email,
+                    "password": u.password,
+                    "role": u.role
+                }
+                data_to_save.append(user_dict)
+
             self.fm.write_csv(
                 self.FILENAME,
-                [u.__dict__ for u in all_users],
+                data_to_save,
                 fieldnames=["username", "email", "password", "role"]
             )
