@@ -6,10 +6,6 @@ from repositories.join_repository import JoinRequestRepository
 class RepositoryFactory:
     @staticmethod
     def get_repository(repo_type):
-        """
-        Factory method to return the correct repository instance
-        based on the 'repo_type' string.
-        """
         if repo_type == "user":
             return UserRepository()
         elif repo_type == "club":
